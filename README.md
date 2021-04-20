@@ -1,6 +1,6 @@
-# front-end
+# Front-end
 
-# Track Team WebPT 162 Devs 
+# Track Team WebPT 162 Devs:
 Tanya Wessar, Nicole Pizzano, Austin Gibbs,
 Casey Dietz, Andrew Castillo
 
