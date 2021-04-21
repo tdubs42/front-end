@@ -1,0 +1,78 @@
+/**
+ * Remember your why
+ **/
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1rem;
+    border-bottom: .25rem solid black;
+    background-color: rgba(76, 91, 97, 1);
+}
+.nav-header {
+    margin-left: 2rem;
+    color: ghostwhite;
+    font-family: "Segoe Script";
+    font-size: 4rem;
+    font-weight: bolder;
+}
+.nav-links {
+    padding: .5rem 2rem;
+    margin: 2rem;
+    color: ghostwhite;
+    font-family: "Segoe UI Semibold", monospace;
+    font-size: 1.75rem;
+    text-decoration: none;
+}
+.nav-links:hover {
+    color: rgba(76, 91, 97, 1);
+    background-color: rgba(182, 203, 158, 1);
+    border-radius: 3rem;
+}
+
+/* Start of media breakpoints for responsive design */
+@media only screen and (min-width: 300px ) {
+    .nav-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .nav-header-container {
+        margin-bottom: 2rem;
+    }
+    .nav-header {
+        text-align: center;
+    }
+    nav {
+        display: flex;
+    }
+    .nav-links {
+        margin: .5rem;
+        color: ghostwhite;
+        background-color: rgba(182, 203, 158, .25);
+        border-radius: 3rem;
+        white-space: nowrap;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .nav-container {
+        flex-direction: row;
+    }
+    .nav-header {
+        margin-top: 1rem;
+    }
+    .nav-links {
+        font-size: 2rem;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: 834px) {
+    .nav-container {
+        justify-content: space-between;
+    }
+    .nav-header {
+        margin-top: 2rem;
+        margin-right: 2rem;
+    }
+}

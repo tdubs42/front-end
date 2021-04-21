@@ -1,0 +1,22 @@
+/**
+ * Remember your why
+ * 
+ * minimalistic reset combined with condensed universal reset
+ *
+ */
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	font-weight: inherit;
+	font-family: inherit;
+	font-style: inherit;
+}
+
+html {
+	font-size: 62.5%; /* Preps app for REM */
+}
