@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Our Routing will go here
+          Our Routing will go here, Sign-in form will be our landing page
         </p>
       </header>
     </div>
