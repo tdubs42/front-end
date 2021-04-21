@@ -8,4 +8,9 @@ With an easy to use interface for creating a plant watering schedule tailored to
 Casey Dietz, Andrew Castillo, Tanya Wessar, Nicole Pizzano, Austin Gibbs
 
 # Stack
-tbd
+ReactJS 
+Styled-Components/CSS
+Yup
+Axios
+React-router-dom
+Redux
