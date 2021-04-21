@@ -9,10 +9,8 @@ const AddPlantForm = ( props ) => {
     };
 
     const onChange = evt => {
-        const { name, value, type, checked } = evt.target;
-        const valueToUse                     = value;
-
-        change( name, valueToUse );
+        const { name, value } = evt.target;
+        change( name, value );
     };
 
     return (
@@ -45,7 +43,7 @@ const AddPlantForm = ( props ) => {
                 placeholder='Needs water twice a week'
                 onChange={change}
                 rows="5"
-                cols="10"
+                cols="24"
             />
             {errors.h2oFrequency.length < 5 && <p className="error">{errors.h2oFrequency}</p>}
 
