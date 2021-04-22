@@ -14,14 +14,14 @@ const AddPlantForm = ( props ) => {
     };
 
     return (
-        <form onSubmit={submit}>
+        <form onSubmit={onSubmit}>
             <label>Plant's Nickname</label>
             <input
                 type="text"
                 name="nickname"
                 placeholder='Hanging plant in living room'
                 value={values.nickname}
-                onChange={change}
+                onChange={onChange}
                 required
                 size="2"
             />
@@ -33,7 +33,7 @@ const AddPlantForm = ( props ) => {
                 name="species"
                 placeholder='Araucaria araucana'
                 value={values.species}
-                onChange={change}
+                onChange={onChange}
             />
 
             <label>Watering Instructions</label>
@@ -41,14 +41,14 @@ const AddPlantForm = ( props ) => {
                 name="h2oFrequency"
                 value={values.h2oFrequency}
                 placeholder='Needs water twice a week'
-                onChange={change}
+                onChange={onChange}
                 rows="5"
                 cols="24"
             />
             {errors.h2oFrequency.length < 5 && <p className="error">{errors.h2oFrequency}</p>}
 
-            {/*<input type='reset' value='Clear Form' />*/}
-            <button>Submit</button>
+            <input type='reset' value='Clear Form' />
+            <input type='submit' value='Save New Plant' />
         </form>
     );
 };

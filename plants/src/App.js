@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Nav from './components/Nav';
 import './styles/App.css';
-import AddPlantForm from './components/AddPlantForm/AddPlantFormHelperFunctions.jsx'
+import AddPlantForm from './components/AddPlantForm/AddPlantFormHelperFunctions.js'
 
 
 function App() {
