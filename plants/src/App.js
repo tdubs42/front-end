@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Nav from './components/Nav';
 import './styles/App.css';
+import AddPlantForm from './components/AddPlantForm/AddPlantFormHelperFunctions.js'
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
                     {/* my-plants */}
                 </Route>
                 <Route exact path='/add-plant'>
-                    {/* add-plant */}
+                    <AddPlantForm />
                 </Route>
             </Switch>
             <section className="App-body">
