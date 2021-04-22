@@ -2,7 +2,7 @@
 import React from "react";
 
 const AddPlantForm = ( props ) => {
-    const { values, change, submit, disabled, errors } = props;
+    const { values, change, submit, errors } = props;
     const onSubmit                                     = evt => {
         evt.preventDefault(); // Stops default behavior of reloading browser window onClick
         submit();
@@ -23,7 +23,7 @@ const AddPlantForm = ( props ) => {
                 value={values.nickname}
                 onChange={onChange}
                 required
-                size="2"
+                min='1'
             />
             {errors.nickname.length < 2 && <p className="error">{errors.nickname}</p>}
 
@@ -37,13 +37,14 @@ const AddPlantForm = ( props ) => {
             />
 
             <label>Watering Instructions</label>
-            <textarea
+            <input
+                type='text'
                 name="h2oFrequency"
-                value={values.h2oFrequency}
                 placeholder='Needs water twice a week'
+                value={values.h2oFrequency}
                 onChange={onChange}
-                rows="5"
-                cols="24"
+                required
+                min='4'
             />
             {errors.h2oFrequency.length < 5 && <p className="error">{errors.h2oFrequency}</p>}
 

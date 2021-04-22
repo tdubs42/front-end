@@ -3,19 +3,26 @@ import React, { useEffect, useState } from "react";
 import axios                          from "axios";
 import * as Yup     from "yup";
 import AddPlantForm from "./AddPlantForm";
+import yupSchema         from "./yupSchema";
 
-import initialFormValues from "./data/initialFormValues";
-import initialFormErrors from "./data/initialFormErrors";
-import yupSchema from "./data/yupSchema";
-import { apiURL as API }    from "./data/apiURL";
+const initialFormValues = {
+    nickname: "",
+    species: "",
+    h2oFrequency: "",
+};
+
+const initialFormErrors = {
+    nickname: "",
+    species: "",
+    h2oFrequency: "",
+};
+
+const API = 'https://reqres.in/';
 
 const AddPlantFormHelperFunctions = () => {
-    const initialPlant                = [];
-    const initialDisabled             = true;
-    const [plants, setPlants]         = useState( initialPlant );
+    const [plants, setPlants]         = useState( [] );
     const [formValues, setFormValues] = useState( initialFormValues );
     const [formErrors, setFormErrors] = useState( initialFormErrors );
-    const [disabled, setDisabled]     = useState( initialDisabled );
 
 // axios GET request
     const getPlants = () => {
@@ -31,15 +38,16 @@ const AddPlantFormHelperFunctions = () => {
 
 // axios POST request
     const postNewPlant = () => {
-        axios
-            .post( API )
-            .then( res => {
-                console.log(res.data);
-                setPlants( [...plants, res.data] );
-            } )
-            .catch( err => {
-                debugger;
-            } );
+        console.log(plants);
+        // axios
+        //     .post( API )
+        //     .then( res => {
+        //         console.log(res.data);
+        //         setPlants( [...plants, res.data] );
+        //     } )
+        //     .catch( err => {
+        //         debugger;
+        //     } );
     };
 
 // Uses Yup for form validation
@@ -74,20 +82,11 @@ const AddPlantFormHelperFunctions = () => {
         setFormValues( initialFormValues );
     };
 
-// toggles submit button disable depending on Yup validation
-    useEffect( () => {
-        yupSchema.isValid( formValues )
-                 .then( valid => {
-                     setDisabled( !valid );
-                 } );
-    }, [formValues] );
-
     return (
         <AddPlantForm
             values={plants}
             change={inputChange}
             submit={formSubmit}
-            disabled={disabled}
             errors={formErrors}
         />
     )
