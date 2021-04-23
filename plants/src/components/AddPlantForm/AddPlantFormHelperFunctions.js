@@ -1,9 +1,22 @@
 // Remember your why
+import * as Yup                       from "yup";
 import React, { useEffect, useState } from "react";
 import axios                          from "axios";
-import * as Yup     from "yup";
-import AddPlantForm from "./AddPlantForm";
-import yupSchema         from "./yupSchema";
+import AddPlantForm                   from "./AddPlantForm";
+
+const yupSchema = Yup.object().shape( {
+                                          nickname: Yup
+                                              .string()
+                                              .required("Required")
+                                              .min( 2 ),
+                                          species: Yup
+                                              .string()
+                                              .max( 200 ),
+                                          h2oFrequency: Yup
+                                              .string()
+                                              .required( "How often do we need to water this one?" )
+                                              .min( 5 ),
+                                      } );
 
 const initialFormValues = {
     nickname: "",
@@ -11,43 +24,37 @@ const initialFormValues = {
     h2oFrequency: "",
 };
 
-const initialFormErrors = {
-    nickname: "",
-    species: "",
-    h2oFrequency: "",
-};
-
-const API = 'https://reqres.in/';
+const API = "http://fakeapi.jsonparseronline.com/posts";
 
 const AddPlantFormHelperFunctions = () => {
     const [plants, setPlants]         = useState( [] );
     const [formValues, setFormValues] = useState( initialFormValues );
-    const [formErrors, setFormErrors] = useState( initialFormErrors );
+    const [formErrors, setFormErrors] = useState( initialFormValues );
+    const [disabled, setDisabled]     = useState( true );
 
 // axios GET request
-    const getPlants = () => {
-        axios
-            .get( API )
-            .then( res => {
-                setPlants( res.data );
-            } )
-            .catch( err => {
-                debugger
-            } );
-    };
+//     const getPlants = () => {
+//         axios
+//             .get( API )
+//             .then( res => {
+//                 setPlants( res.data );
+//             } )
+//             .catch( err => {
+//                 debugger
+//             } );
+//     };
 
 // axios POST request
     const postNewPlant = () => {
-        console.log(plants);
-        // axios
-        //     .post( API )
-        //     .then( res => {
-        //         console.log(res.data);
-        //         setPlants( [...plants, res.data] );
-        //     } )
-        //     .catch( err => {
-        //         debugger;
-        //     } );
+        axios
+            .post( API )
+            .then( res => {
+                setPlants( [...plants, res.data] );
+                setFormValues( initialFormValues );
+            } )
+            .catch( err => {
+                debugger;
+            } );
     };
 
 // Uses Yup for form validation
@@ -55,7 +62,7 @@ const AddPlantFormHelperFunctions = () => {
         Yup
             .reach( yupSchema, name )
             .validate( value )
-            .then( valid => {
+            .then( () => {
                 setFormErrors( {
                                    ...formErrors,
                                    [name]: "",
@@ -67,6 +74,7 @@ const AddPlantFormHelperFunctions = () => {
                                    [name]: err.errors[0],
                                } );
             } );
+
         setFormValues( { ...formValues, [name]: value } );
     };
 
@@ -79,17 +87,24 @@ const AddPlantFormHelperFunctions = () => {
         };
 
         postNewPlant( newPlant );
-        setFormValues( initialFormValues );
     };
+
+    useEffect( () => {
+        yupSchema.isValid( formValues ).then( valid => {
+            setDisabled( !valid );
+        });
+    }, [formValues] )
+
 
     return (
         <AddPlantForm
-            values={plants}
+            values={formValues}
             change={inputChange}
             submit={formSubmit}
             errors={formErrors}
+            disabled={disabled}
         />
-    )
+    );
 };
 
 export default AddPlantFormHelperFunctions;
