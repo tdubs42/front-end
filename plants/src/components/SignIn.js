@@ -73,8 +73,8 @@ const SignIn = () => {
   return (
     <div>
       <h1>Water Your Plants!</h1>
-      <section className='wrapper'>
-        <section className='card1'>
+      <section className='sign-in-container'>
+        <section>
           <h2>Sign in</h2>
           <form onSubmit={submit}>
             <label htmlFor='username'>
@@ -115,7 +115,7 @@ const SignIn = () => {
             </button>
             <br></br>
             <br></br>
-            <Link to='/signup' className='links'>
+            <Link to='/signup'>
               Need an account? Sign-up
             </Link>
             <br></br>
