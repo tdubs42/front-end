@@ -2,7 +2,7 @@
 import React from "react";
 
 const AddPlantForm = ( props ) => {
-    const { values, change, submit, errors } = props;
+    const { values, change, submit, errors, disabled } = props;
     const onSubmit                                     = evt => {
         evt.preventDefault(); // Stops default behavior of reloading browser window onClick
         submit();
@@ -22,10 +22,8 @@ const AddPlantForm = ( props ) => {
                 placeholder='Hanging plant in living room'
                 value={values.nickname}
                 onChange={onChange}
-                required
-                min='1'
             />
-            {errors.nickname.length < 2 && <p className="error">{errors.nickname}</p>}
+            <p className="error">{errors.nickname}</p>
 
             <label>Plant's Species</label>
             <input
@@ -43,13 +41,11 @@ const AddPlantForm = ( props ) => {
                 placeholder='Needs water twice a week'
                 value={values.h2oFrequency}
                 onChange={onChange}
-                required
-                min='4'
             />
-            {errors.h2oFrequency.length < 5 && <p className="error">{errors.h2oFrequency}</p>}
+            <p className="error">{errors.h2oFrequency}</p>
 
             <input type='reset' value='Clear Form' />
-            <input type='submit' value='Save New Plant' />
+            <button disabled={disabled}>Add Plant</button>
         </form>
     );
 };
