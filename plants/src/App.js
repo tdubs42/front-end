@@ -3,31 +3,34 @@ import { Route, Switch } from 'react-router-dom';
 import Nav from './components/Nav';
 import './styles/App.css';
 import AddPlantForm from './components/AddPlantForm/AddPlantFormHelperFunctions.js'
+import SignIn from './components/SignIn';
 
 
 function App() {
+    const logout = () => {
+        localStorage.removeItem('token');
+    }
+
     return (
         <>
-            <Nav />
+        {/* the nav will be removed when things get fixed, it'll be here for testing purposes */}
+        <Nav logout={logout}/> 
+        <section className="App-body">
             <Switch>
-                <Route exact path='/'>
-                    {/* sign in */}
-                </Route>
-                <Route exact path='/sign-up'>
+                <Route path='/sign-up'>
                     {/* sign up */}
                 </Route>
-                <Route exact path='/my-plants'>
+                <Route path='/my-plants'>
                     {/* my-plants */}
                 </Route>
-                <Route exact path='/add-plant'>
+                <Route path='/add-plant'>
                     <AddPlantForm />
                 </Route>
+                <Route exact path='/'>
+                    <SignIn/>
+                </Route>
             </Switch>
-            <section className="App-body">
-                <p>
-                    Sign-in form will be our landing page
-                </p>
-            </section>
+        </section>
         </>
     );
 }

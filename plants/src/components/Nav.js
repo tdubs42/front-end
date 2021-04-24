@@ -2,7 +2,9 @@ import React       from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/Nav.css";
 
-const Nav = () => {
+const Nav = (props) => {
+    const { logout } = props;
+
     return (
         <section className="nav-container">
             <header className="nav-header-container">
@@ -15,7 +17,7 @@ const Nav = () => {
                 <NavLink to="/add-plant" className="nav-links">
                     Add Plant
                 </NavLink>
-                <NavLink to="/" className="nav-links">
+                <NavLink onClick={logout} to="/" className="nav-links">
                     Logout
                 </NavLink>
             </nav>
