@@ -2,20 +2,21 @@
 import * as Yup                       from "yup";
 import React, { useEffect, useState } from "react";
 import axios                          from "axios";
-import AddPlantForm                   from "./AddPlantForm";
-import '../../styles/AddPlantForm.css';
+import "../styles/AddPlantForm.css";
 
 const yupSchema = Yup.object().shape( {
                                           nickname: Yup
                                               .string()
-                                              .required("Required")
+                                              .required()
+                                              .typeError( "Required" )
                                               .min( 2 ),
                                           species: Yup
                                               .string()
                                               .max( 200 ),
                                           h2oFrequency: Yup
                                               .string()
-                                              .required( "How often do we need to water this one?" )
+                                              .required()
+                                              .typeError( "How often do we need to water this one?" )
                                               .min( 5 ),
                                       } );
 
@@ -27,7 +28,7 @@ const initialFormValues = {
 
 const API = "http://fakeapi.jsonparseronline.com/posts";
 
-const AddPlantFormHelperFunctions = () => {
+const AddPlantForm = () => {
     const [plants, setPlants]         = useState( [] );
     const [formValues, setFormValues] = useState( initialFormValues );
     const [formErrors, setFormErrors] = useState( initialFormValues );
@@ -54,7 +55,7 @@ const AddPlantFormHelperFunctions = () => {
                 setFormValues( initialFormValues );
             } )
             .catch( err => {
-                console.log(err);
+                console.log( err );
             } );
     };
 
@@ -93,19 +94,69 @@ const AddPlantFormHelperFunctions = () => {
     useEffect( () => {
         yupSchema.isValid( formValues ).then( valid => {
             setDisabled( !valid );
-        });
-    }, [formValues] )
+        } );
+    }, [formValues] );
 
+    const onSubmit = evt => {
+        evt.preventDefault(); // Stops default behavior of reloading browser window onClick
+        formSubmit();
+    };
+
+    const onChange = evt => {
+        const { name, value } = evt.target;
+        inputChange( name, value );
+    };
+
+    const formReset = () => {
+        document.getElementById( "nickname" ).value     = "";
+        document.getElementById( "species" ).value      = "";
+        document.getElementById( "h2oFrequency" ).value = "";
+    };
 
     return (
-        <AddPlantForm
-            values={formValues}
-            change={inputChange}
-            submit={formSubmit}
-            errors={formErrors}
-            disabled={disabled}
-        />
+        <form className="add-plant-form" onSubmit={onSubmit}>
+            <h1 className="add-plant-header">Add a Plant</h1>
+            <div className="input-container">
+                <label className="add-plant-label">Plant's Nickname</label>
+                <input
+                    type="text"
+                    name="nickname"
+                    id="nickname"
+                    placeholder="Hanging plant in living room"
+                    value={formValues.nickname}
+                    onChange={onChange}
+                />
+                <p className="error">{formErrors.nickname}</p>
+
+                <label className="add-plant-label">Plant's Species</label>
+                <input
+                    type="text"
+                    name="species"
+                    id="species"
+                    placeholder="Araucaria araucana"
+                    value={formValues.species}
+                    onChange={onChange}
+                />
+
+                <label className="add-plant-label">Watering Instructions</label>
+                <input
+                    type="text"
+                    name="h2oFrequency"
+                    id="h2oFrequency"
+                    placeholder="Needs water twice a week"
+                    value={formValues.h2oFrequency}
+                    onChange={onChange}
+                />
+                <p className="error">{formErrors.h2oFrequency}</p>
+
+                <div className="form-button-container">
+                    <button className="add-plant-form-button submit-btn" type="submit" disabled={disabled}>Add Plant
+                    </button>
+                    <button className="add-plant-form-button reset-btn" onClick={formReset}>Reset Form</button>
+                </div>
+            </div>
+        </form>
     );
 };
 
-export default AddPlantFormHelperFunctions;
+export default AddPlantForm;
