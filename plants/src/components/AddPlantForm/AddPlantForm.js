@@ -57,7 +57,7 @@ const AddPlantForm = ( props ) => {
 
                 <div className="form-button-container">
                     <button className="add-plant-form-button submit-btn" type="submit" disabled={disabled}>Add Plant</button>
-                    <input className="add-plant-form-button reset-btn" type="reset" onClick={formReset} value="Reset Form" />
+                    <button className="add-plant-form-button reset-btn" onClick={formReset}>Reset Form</button>
                 </div>
             </div>
         </form>
