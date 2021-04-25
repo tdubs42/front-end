@@ -13,39 +13,53 @@ const AddPlantForm = ( props ) => {
         change( name, value );
     };
 
+    const formReset = () => {
+        document.getElementById("nickname").value = "";
+        document.getElementById("species").value = "";
+        document.getElementById("h2oFrequency").value = "";
+    }
+
     return (
-        <form onSubmit={onSubmit}>
-            <label>Plant's Nickname</label>
-            <input
-                type="text"
-                name="nickname"
-                placeholder='Hanging plant in living room'
-                value={values.nickname}
-                onChange={onChange}
-            />
-            <p className="error">{errors.nickname}</p>
+        <form className="add-plant-form" onSubmit={onSubmit}>
+            <h1 className="add-plant-header">Add a Plant</h1>
+            <div className="input-container">
+                <label className="add-plant-label">Plant's Nickname</label>
+                <input
+                    type="text"
+                    name="nickname"
+                    id="nickname"
+                    placeholder="Hanging plant in living room"
+                    value={values.nickname}
+                    onChange={onChange}
+                />
+                <p className="error">{errors.nickname}</p>
 
-            <label>Plant's Species</label>
-            <input
-                type="text"
-                name="species"
-                placeholder='Araucaria araucana'
-                value={values.species}
-                onChange={onChange}
-            />
+                <label className="add-plant-label">Plant's Species</label>
+                <input
+                    type="text"
+                    name="species"
+                    id="species"
+                    placeholder="Araucaria araucana"
+                    value={values.species}
+                    onChange={onChange}
+                />
 
-            <label>Watering Instructions</label>
-            <input
-                type='text'
-                name="h2oFrequency"
-                placeholder='Needs water twice a week'
-                value={values.h2oFrequency}
-                onChange={onChange}
-            />
-            <p className="error">{errors.h2oFrequency}</p>
+                <label className="add-plant-label">Watering Instructions</label>
+                <input
+                    type="text"
+                    name="h2oFrequency"
+                    id="h2oFrequency"
+                    placeholder="Needs water twice a week"
+                    value={values.h2oFrequency}
+                    onChange={onChange}
+                />
+                <p className="error">{errors.h2oFrequency}</p>
 
-            <input type='reset' value='Clear Form' />
-            <button disabled={disabled}>Add Plant</button>
+                <div className="form-button-container">
+                    <button className="add-plant-form-button submit-btn" type="submit" disabled={disabled}>Add Plant</button>
+                    <input className="add-plant-form-button reset-btn" type="reset" onClick={formReset} value="Reset Form" />
+                </div>
+            </div>
         </form>
     );
 };

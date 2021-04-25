@@ -1,6 +1,10 @@
 /**
  * Remember your why
  **/
+html {
+    background-color: #92b4a7;
+}
+
 .App-body {
     padding: 1rem;
     font-size: 2rem;
