@@ -3,6 +3,7 @@ import * as Yup                       from "yup";
 import React, { useEffect, useState } from "react";
 import axios                          from "axios";
 import AddPlantForm                   from "./AddPlantForm";
+import '../../styles/AddPlantForm.css';
 
 const yupSchema = Yup.object().shape( {
                                           nickname: Yup
@@ -53,7 +54,7 @@ const AddPlantFormHelperFunctions = () => {
                 setFormValues( initialFormValues );
             } )
             .catch( err => {
-                debugger;
+                console.log(err);
             } );
     };
 
