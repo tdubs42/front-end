@@ -4,7 +4,7 @@ import Nav from './components/Nav';
 import './styles/App.css';
 import AddPlantForm from './components/AddPlantForm.js'
 import SignIn from './components/SignIn';
-
+import SignUp from './components/SignUp';
 
 function App() {
     const logout = () => {
@@ -18,7 +18,7 @@ function App() {
         <section className="App-body">
             <Switch>
                 <Route path='/sign-up'>
-                    {/* sign up */}
+                    <SignUp />
                 </Route>
                 <Route path='/my-plants'>
                     {/* my-plants */}

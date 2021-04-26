@@ -115,7 +115,7 @@ const SignIn = () => {
             </button>
             <br></br>
             <br></br>
-            <Link to='/signup'>
+            <Link to='/sign-up'>
               Need an account? Sign-up
             </Link>
             <br></br>
