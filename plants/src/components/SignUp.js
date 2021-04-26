@@ -5,7 +5,7 @@ import './App.css';
 import axios from 'axios';
 
 
-//this is working
+
 const schema = yup.object().shape({
     fname: yup.string().required('user is required').min(6, 'please enter a name longer than 6 chars'),
     email: yup.string().required('email is required').min(6, 'please enter a valid email address'),
@@ -63,14 +63,14 @@ export default function SignUp(){
 const validation= e => {
     yup.reach(schema, e.target.name)
     .validate(e.target.value)
-    .then(() => {
+    .then((valid) => {
         setErrors({
-            ...errors, [e.target.name]: " "
+            ...errors, [e.target.errors]: " "
         })
     })
     .catch((err) => {
         setErrors({
-            ...errors, [e.target.name]: err.errors[0]
+            ...errors, [e.target.errors]: err.errors[0]
         })
     })
 }
@@ -93,7 +93,7 @@ const validation= e => {
 
             <form onSubmit = {handleSubmit}>
 
-                <label htmlFor='fname'>Name:    </label>
+                <label htmlFor='fname'>Name:   
 
                 <input onChange={onInputChange}
                name='fname'
@@ -103,11 +103,12 @@ const validation= e => {
                 type='text'
                 value={formData.fname}
                 />
-               
+               {errors.fname.length > 0 ? <span className = "errors">{errors.fname} </span> : null }
+               </label>
 <br>
 </br>
 
-<label htmlFor='email'> email:    </label>
+<label htmlFor='email'> email:    
 
 <input onChange={onInputChange}
                  name='email'
@@ -117,12 +118,14 @@ const validation= e => {
                 type='email'
                 value={formData.email}
                 />
+{errors.email.length > 0 ? <span className = "errors">{errors.email} </span> : null }
+</label>
 
                 <br>
                 </br>
 
 
-<label htmlFor='password'>password:    </label>
+<label htmlFor='password'>password:    
 
 <input onChange={onInputChange}
                 name='password'
@@ -132,13 +135,14 @@ const validation= e => {
                 type='text'
                 value={formData.password}
                 />
-
+{errors.password.length > 0 ? <span className = "errors">{errors.password} </span> : null }
+</label>
 
 
 <br>
 </br>
 
-<label htmlFor='phone'> phone:   </label>
+<label htmlFor='phone'> phone:   
 
 <input onChange={onInputChange}
                 name='phone'
@@ -148,7 +152,8 @@ const validation= e => {
                 type='text'
                 value={formData.phone}
                 />
-
+{errors.phone.length > 0 ? <span className = "errors">{errors.phone} </span> : null }
+</label>
                 <br>
                 </br>
 
