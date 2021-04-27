@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { axiosAuth } from "../utils/axiosAuth";
 import * as Yup from "yup";
 import 'yup-phone';
 import { Link } from "react-router-dom";
@@ -58,9 +58,9 @@ const SignIn = () => {
   // onSubmit function
   const submit = (e) => {
     e.preventDefault();
-    axios //if successful, sets token to localstorage, can make logout if we remove the localstorage
+    axiosAuth //if successful, sets token to localstorage, can make logout if we remove the localstorage
       .post(
-        'https://reqres.in/api/login',
+        '/api/login', // refactored with axiosAuth
         formState
       )
       .then((res) => {
