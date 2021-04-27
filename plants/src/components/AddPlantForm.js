@@ -1,7 +1,7 @@
 // Remember your why
 import * as Yup                       from "yup";
 import React, { useEffect, useState } from "react";
-import axios                          from "axios";
+import { axiosAuth }                          from "../utils/axiosAuth";
 import "../styles/AddPlantForm.css";
 
 const yupSchema = Yup.object().shape( {
@@ -26,7 +26,7 @@ const initialFormValues = {
     h2oFrequency: "",
 };
 
-const API = "http://fakeapi.jsonparseronline.com/posts";
+// const API = "http://fakeapi.jsonparseronline.com/posts"; // dont need with axiosAuth
 
 const AddPlantForm = () => {
     const [plants, setPlants]         = useState( [] );
@@ -48,8 +48,8 @@ const AddPlantForm = () => {
 
 // axios POST request
     const postNewPlant = () => {
-        axios
-            .post( API )
+        axiosAuth
+            .post( '/api/users' )  // refactored with axiosAuth
             .then( res => {
                 setPlants( [...plants, res.data] );
                 setFormValues( initialFormValues );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import * as yup from 'yup'
-import axios from 'axios';
+import { axiosAuth } from '../utils/axiosAuth';
 import {Link} from 'react-router-dom';
 
 const schema = yup.object().shape({
@@ -36,7 +36,8 @@ export default function SignUp(){
 
     const handleSubmit= event => {
         event.preventDefault();
-        axios.post('https://reqres.in/api/register', formData)
+        axiosAuth
+            .post('/api/register', formData) // refactored with axiosAuth
             .then(res => { 
                 localStorage.setItem('token', res.data.token) 
                 setFormData({
