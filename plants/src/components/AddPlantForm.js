@@ -48,7 +48,7 @@ const AddPlantForm = () => {
 
 // axios POST request
     const postNewPlant = () => {
-        axiosAuth
+        axiosAuth()
             .post( '/api/users' )  // refactored with axiosAuth
             .then( res => {
                 setPlants( [...plants, res.data] );

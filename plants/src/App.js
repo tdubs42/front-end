@@ -6,6 +6,8 @@ import AddPlantForm from './components/AddPlantForm.js'
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import ProtectedRoute from './utils/ProtectedRoute';
+import ViewPlants from './components/ViewPlants';
+import { EditPlant } from './components/editPlantForm';
 
 function App() {
     const logout = () => {
@@ -21,16 +23,14 @@ function App() {
                 <Route path='/sign-up'>
                     <SignUp />
                 </Route>
-                <Route path='/my-plants'>
-                    {/* my-plants should go in ProtectedRoute once built */}
-                </Route>
-                <Route path='/add-plant'>
-                    <AddPlantForm />
-                </Route>
                 <Route exact path='/'>
                     <SignIn/>
                 </Route>
-                <ProtectedRoute exact path="/protected" component={AddPlantForm} />
+                <ProtectedRoute>
+                    <Route exact path='/add-plant' component={AddPlantForm} />
+                    <Route exact path='/my-plants' component={ViewPlants} />
+                    <Route exact path='/edit-plant' component={EditPlant} />
+                </ProtectedRoute>
             </Switch>
         </section>
         </>
