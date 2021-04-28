@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosAuth } from "../utils/axiosAuth";
 import * as Yup from "yup";
 import 'yup-phone';
-import { Link } from "react-router-dom";
+import { Link , useHistory} from "react-router-dom";
 
 //InitialState
 const initialState = {
@@ -31,6 +31,8 @@ const SignIn = () => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [errors, setErrors] = useState(initialState);
 
+  const history = useHistory()
+
   useEffect(() => {
     formSchema.isValid(formState).then((valid) => {
       setButtonDisabled(!valid);
@@ -58,7 +60,7 @@ const SignIn = () => {
   // onSubmit function
   const submit = (e) => {
     e.preventDefault();
-    axiosAuth //if successful, sets token to localstorage, can make logout if we remove the localstorage
+    axiosAuth() //if successful, sets token to localstorage, can make logout if we remove the localstorage
       .post(
         '/api/login', // refactored with axiosAuth
         formState
@@ -66,6 +68,7 @@ const SignIn = () => {
       .then((res) => {
         console.log(res)
         localStorage.setItem('token', res.data.token); 
+        history.push('/my-plants')
       })
       .catch((err) => console.error('failed logging in: ', err));
   };
