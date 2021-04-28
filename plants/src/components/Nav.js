@@ -2,8 +2,11 @@ import React       from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/Nav.css";
 
-const Nav = (props) => {
-    const { logout } = props;
+const Nav = () => {
+    
+    const logout = () => {
+        localStorage.removeItem('token');
+    }
 
     return (
         <section className="nav-container">
