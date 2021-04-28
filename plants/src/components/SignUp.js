@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import * as yup from 'yup'
 import { axiosAuth } from '../utils/axiosAuth';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+
 
 const schema = yup.object().shape({
     fname: yup.string().required('user is required').min(6, 'please enter a name longer than 6 chars'),
@@ -23,8 +24,9 @@ export default function SignUp(){
         email: '',
         password: '',
         phone: ''
-    
     }) 
+    const history = useHistory();
+
     // const [disabled, setDisabled] = useState(true)
     const onInputChange = event => {
         // const { form, value, type, name } = event.target
@@ -36,8 +38,7 @@ export default function SignUp(){
 
     const handleSubmit= event => {
         event.preventDefault();
-        axiosAuth
-            .post('/api/register', formData) // refactored with axiosAuth
+        axiosAuth().post('/api/register', formData) // refactored with axiosAuth
             .then(res => { 
                 localStorage.setItem('token', res.data.token) 
                 setFormData({
@@ -46,6 +47,8 @@ export default function SignUp(){
                     password: '',
                     phone: ''
             })
+            history.push('/my-plants')
+            console.log(res)
         })
         .catch(err => console.error(err.response))
     }

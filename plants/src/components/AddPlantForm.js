@@ -3,6 +3,7 @@ import * as Yup                       from "yup";
 import React, { useEffect, useState } from "react";
 import { axiosAuth }                          from "../utils/axiosAuth";
 import "../styles/AddPlantForm.css";
+import Nav from "./Nav";
 
 const yupSchema = Yup.object().shape( {
                                           nickname: Yup
@@ -114,6 +115,8 @@ const AddPlantForm = () => {
     };
 
     return (
+        <>
+        <Nav />
         <form className="add-plant-form" onSubmit={onSubmit}>
             <h1 className="add-plant-header">Add a Plant</h1>
             <div className="input-container">
@@ -156,6 +159,7 @@ const AddPlantForm = () => {
                 </div>
             </div>
         </form>
+        </>
     );
 };
 

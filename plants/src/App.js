@@ -1,7 +1,7 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import Nav from './components/Nav';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles/App.css';
+
 import AddPlantForm from './components/AddPlantForm.js'
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
@@ -10,30 +10,33 @@ import ViewPlants from './components/ViewPlants';
 import { EditPlant } from './components/editPlantForm';
 
 function App() {
-    const logout = () => {
-        localStorage.removeItem('token');
-    }
-
     return (
-        <>
+        <Router>
         {/* the nav will be removed when things get fixed, it'll be here for testing purposes */}
-        <Nav logout={logout}/> 
+        {/* <Nav logout={logout}/>  */}
+        <div>
         <section className="App-body">
             <Switch>
-                <Route path='/sign-up'>
-                    <SignUp />
-                </Route>
-                <Route exact path='/'>
-                    <SignIn/>
-                </Route>
-                <ProtectedRoute>
-                    <Route exact path='/add-plant' component={AddPlantForm} />
-                    <Route exact path='/my-plants' component={ViewPlants} />
-                    <Route exact path='/edit-plant' component={EditPlant} />
+                <Route exact path='/' component={SignIn} />
+                <Route path='/sign-up' component={SignUp}/>
+                <ProtectedRoute 
+                    exact path='/add-plant' 
+                    component={AddPlantForm} >
                 </ProtectedRoute>
+                <ProtectedRoute 
+                    exact path='/my-plants' 
+                    component={ViewPlants}>
+                </ProtectedRoute>
+                <ProtectedRoute 
+                    exact path='/edit-plant' 
+                    component={EditPlant} >
+                </ProtectedRoute>
+                    {/* <Route exact path='/my-plants' component={ViewPlants} />
+                    <Route exact path='/edit-plant' component={EditPlant} /> */}
             </Switch>
         </section>
-        </>
+        </div>
+        </Router>
     );
 }
 

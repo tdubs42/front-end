@@ -1,11 +1,10 @@
-import axios from 'axios';
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 import { axiosAuth } from '../utils/axiosAuth';
 
 
 export const EditPlant = (props) => {
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
