@@ -1,84 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-.add-plant-form, .input-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+@media only screen and (min-width: 250px) {
+    .add-plant-form, .input-container {
+        display:         flex;
+        flex-direction:  column;
+        justify-content: center;
+        align-items:     center;
+        }
 
-.add-plant-form {
-    padding: 3rem 0;
-    margin: 6rem 23%;
-    background-color: #707070;
-    border-radius: 2rem;
-    filter: drop-shadow(8px 8px 10px #81667a);
-}
+    .add-plant-form {
+        padding:          3rem 0;
+        margin:           1.75rem 10%;
+        background-color: #707070;
+        border-radius:    2rem;
+        filter:           drop-shadow(8px 8px 10px #81667a);
+        }
 
-.add-plant-header {
-    font-family: 'Righteous', cursive;
-    font-size: 4.5rem;
-    text-shadow: -.125rem -.125rem 0 #b6cb9e,
-    .125rem -.125rem 0 #b6cb9e,
-    -.125rem .125rem 0 #b6cb9e,
-    .125rem .125rem 0 #b6cb9e;
-}
+    .add-plant-header {
+        font-family: "Righteous", cursive;
+        font-size:   4rem;
+        text-align:  center;
+        text-shadow: -.125rem -.125rem 0 #b6cb9e,
+                     .125rem -.125rem 0 #b6cb9e,
+                     -.125rem .125rem 0 #b6cb9e,
+                     .125rem .125rem 0 #b6cb9e;
+        /* text shadow trick found here https://wpshout.com/quick-guides/create-text-outline-css/ */
+        }
 
-/* text shadow trick found here https://wpshout.com/quick-guides/create-text-outline-css/ */
-.add-plant-label {
-    width: 100%;
-    margin-top: 2rem;
-    margin-bottom: .5rem;
-    color: ghostwhite;
-    font-family: 'Righteous', cursive;
-    font-size: 4rem;
-    font-variant: all-small-caps;
-    text-align: left;
-    text-shadow: -.125rem -.125rem 0 black,
-    .125rem -.125rem 0 black,
-    -.125rem .125rem 0 black,
-    .125rem .125rem 0 black;
-}
+    .add-plant-label {
+        width:         100%;
+        padding-left:  .5rem;
+        margin-top:    2rem;
+        margin-bottom: .5rem;
+        color:         ghostwhite;
+        font-family:   "Righteous", cursive;
+        font-size:     3rem;
+        font-variant:  all-small-caps;
+        text-align:    left;
+        text-shadow:   -.125rem -.125rem 0 black,
+                       .125rem -.125rem 0 black,
+                       -.125rem .125rem 0 black,
+                       .125rem .125rem 0 black;
+        }
 
-.input-container > input {
-    width: 33vw;
-    height: 5rem;
-    padding: 1rem;
-    font-family: monospace;
-    font-size: 2.25rem;
-    font-weight: bold;
-    border-radius: 1.5rem;
-}
+    .input-container {
+        width: 90%;
+        }
 
-.form-button-container {
-    display: flex;
-    justify-content: space-between;
-    width: 75%;
-    margin: 2rem;
-}
+    .input-container > input {
+        width:         95%;
+        height:        3rem;
+        padding:       1rem;
+        font-family:   monospace;
+        font-size:     2rem;
+        font-weight:   bold;
+        border-radius: 1.5rem;
+        }
 
-.add-plant-form-button {
-    padding: 1rem;
-    border: .25rem solid black;
-    font-family: 'Righteous', cursive;
-    font-size: 3.5rem;
-    border-radius: 1.25rem;
-}
+    .form-button-container {
+        display:         flex;
+        justify-content: space-between;
+        width:           75%;
+        margin:          2rem;
+        }
 
-.submit-btn {
-    background-color: #b6cb9e;
-}
+    .add-plant-form-button {
+        padding:       1rem;
+        border:        .25rem solid black;
+        font-family:   "Righteous", cursive;
+        font-size:     2rem;
+        border-radius: 1.25rem;
+        }
 
-.submit-btn:hover {
-    text-decoration: underline dashed black;
-    background-color: #8de52d;
-}
+    .submit-btn {
+        background-color: #b6cb9e;
+        }
 
-.reset-btn {
-    background-color: rgba(176, 113, 86, 0.75);
-}
+    .submit-btn:hover {
+        text-decoration:  underline dashed black;
+        background-color: #8de52d;
+        cursor: cell;
+        }
 
-.reset-btn:hover {
-    text-decoration: underline dashed black;
-    background-color: #e7591e;
-}
+    .reset-btn {
+        background-color: rgba(176, 113, 86, 0.75);
+        }
+
+    .reset-btn:hover {
+        text-decoration:  underline dashed black;
+        background-color: #e7591e;
+        cursor: cell;
+        }
+    }
+
+
+@media only screen and (min-width: 600px) {
+    .add-plant-form {
+        margin-left: 4rem;
+        }
+
+    .add-plant-header {
+        margin-bottom: -1rem;
+        }
+
+    .input-container > input {
+        width: 100%;
+        }
+
+    .add-plant-form-button {
+        font-size:     2.25rem;
+        }
+    }
+
+@media only screen and (min-width: 768px) {
+    .add-plant-form {
+        margin:           3rem 18%;
+        }
+    }
+
+@media only screen and (min-width: 992px) {
+    .add-plant-form {
+        margin:           6rem 23%;
+        }
+    }
+
+@media only screen and (min-width: 1200px) {
+    .input-container > input {
+        font-size:     2.25rem;
+        }
+
+    .add-plant-form-button {
+        font-size:     3rem;
+        }
+    }
+
+@media only screen and (min-width: 1800px) {
+    .add-plant-form {
+        margin:           6rem 33%;
+        }
+    }
