@@ -4,7 +4,7 @@
  * font import in App.css
  **/
 @media only screen and (min-width: 250px) {
-    .sign-in-header {
+    .sign-up-header {
         width:            100vw;
         padding:          1.5rem 1rem;
         border-bottom:    .25rem solid black;
@@ -16,20 +16,20 @@
         background-color: rgba(76, 91, 97, 1);
         }
 
-    .sign-in-img-container {
+    .sign-up-img-container {
         display: flex;
         }
 
-    .sign-in-image {
+    .sign-up-image {
         display: none;
         }
 
-    .sign-in-container {
+    .sign-up-container {
         width:  100%;
         margin: 2rem;
         }
 
-    .sign-in-form {
+    .sign-up-form {
         display:          flex;
         flex-direction:   column;
         align-items:      center;
@@ -39,7 +39,7 @@
         filter:           drop-shadow(8px 8px 10px #81667a);
         }
 
-    .sign-in-title {
+    .sign-up-title {
         margin-bottom: -2rem;
         font-family:   "Righteous", cursive;
         font-size:     3rem;
@@ -51,7 +51,7 @@
         /* text shadow trick found here https://wpshout.com/quick-guides/create-text-outline-css/ */
         }
 
-    .sign-in-label {
+    .sign-up-label {
         width:         100%;
         padding-left:  .5rem;
         margin-top:    2rem;
@@ -67,7 +67,7 @@
                        .125rem .125rem 0 black;
         }
 
-    .sign-in-input {
+    .sign-up-input {
         width:         95%;
         height:        3rem;
         padding:       1rem;
@@ -77,7 +77,7 @@
         border-radius: 1.5rem;
         }
 
-    .sign-in-btn {
+    .sign-up-btn {
         width:            33%;
         padding:          1rem;
         border:           .25rem solid black;
@@ -88,13 +88,13 @@
         background-color: #b6cb9e;
         }
 
-    .sign-in-btn:hover {
+    .sign-up-btn:hover {
         text-decoration:  underline dashed black;
         background-color: #8de52d;
         cursor: cell;
         }
 
-    #signUpLink {
+    #signInLink {
         color:       ghostwhite;
         font-family: monospace;
         font-size:   2.25rem;
@@ -102,24 +102,24 @@
         text-align:  center;
         }
 
-    #signUpLink:hover {
+    #signInLink:hover {
         font-variant: all-small-caps;
         }
 
-    #signUpLink > .sign-up-cta {
+    #signInLink > .sign-in-cta {
         color:       #b07156;
         font-family: "Righteous", cursive;
         font-size:   3rem;
         text-shadow:   -.125rem -.125rem 0 black,
-                       .125rem -.125rem 0 black,
-                       -.125rem .125rem 0 black,
-                       .125rem .125rem 0 black;
+                     .125rem -.125rem 0 black,
+                     -.125rem .125rem 0 black,
+                     .125rem .125rem 0 black;
         }
 
     }
 
 @media only screen and (min-width: 600px) {
-    .sign-in-image {
+    .sign-up-image {
         display: initial;
         max-width: 45%;
         height: auto;
@@ -129,37 +129,37 @@
     }
 
 @media only screen and (min-width: 768px) {
-    .sign-in-img-container {
+    .sign-up-img-container {
         justify-content: center;
         align-items: center;
         }
 
-    .sign-in-image {
+    .sign-up-image {
         max-width: 36%;
         margin: 2rem 3rem;
         }
     }
 
 @media only screen and (min-width: 992px) {
-    .sign-in-image {
+    .sign-up-image {
         max-width: 33%;
-        margin: 3rem 3rem 0 3rem;
+        /*margin: 3rem 3rem 0 3rem;*/
         }
 
-    .sign-in-form {
-        margin: 2rem 5rem 0 0;
+    .sign-up-form {
+        /*margin: 2rem 5rem 0 0;*/
         }
     }
 
 @media only screen and (min-width: 1200px) {
-    .sign-in-img-container {
+    .sign-up-img-container {
         margin: 0 12rem;
         }
     }
 
 @media only screen and (min-width: 1800px) {
-    .sign-in-form {
+    .sign-up-form {
         max-width: 75%;
-        margin-left: 20%;
+        /*margin-left: 20%;*/
         }
     }
