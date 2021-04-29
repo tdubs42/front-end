@@ -28,7 +28,7 @@ function App() {
                     component={ViewPlants}>
                 </ProtectedRoute>
                 <ProtectedRoute 
-                    exact path='/edit-plant' 
+                    path='/edit-plant'
                     component={EditPlant} >
                 </ProtectedRoute>
                     {/* <Route exact path='/my-plants' component={ViewPlants} />
