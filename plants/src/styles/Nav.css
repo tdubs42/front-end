@@ -11,9 +11,9 @@
 }
 .nav-header {
     margin-left: 2rem;
-    color: ghostwhite;
-    font-family: "Segoe Script";
-    font-size: 4rem;
+    color:       ghostwhite;
+    font-family: "Segoe Script", serif;
+    font-size:   4rem;
     font-weight: bolder;
 }
 .nav-links {

@@ -35,7 +35,7 @@ export const EditPlant = (props) => {
               id="h2oFrequency"
             />
           <div className="form-button-container">
-            <button className="add-plant-form-button submit-btn" type="submit">Add Plant</button>
+            <button className="add-plant-form-button submit-btn" type="submit">Update Plant</button>
           </div>
         </form>
       </div>

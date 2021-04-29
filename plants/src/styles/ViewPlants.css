@@ -1,0 +1,75 @@
+@media only screen and (min-width: 250px) {
+    .plant-container {
+        display:               grid;
+        grid-template-columns: repeat(1, 100%);
+        gap:                   2%;
+        padding:               3%;
+        }
+
+    .plant-card {
+        display:          flex;
+        flex-direction:   column;
+        justify-content:  center;
+        align-items:      center;
+        width:            99%;
+        height:           fit-content;
+        padding:          5%;
+        background-color: #707070;
+        border-radius:    2rem;
+        filter:           drop-shadow(8px 8px 10px #81667a);
+        }
+
+    .plant-card-accent {
+        display:          flex;
+        flex-direction:   column;
+        justify-content:  center;
+        align-items:      center;
+        width:            100%;
+        height:           100%;
+        padding:          8%;
+        color:            ghostwhite;
+        font-family:      monospace;
+        text-align:       center;
+        background-color: rgba(76, 91, 97, 0.75);
+        border-radius:    2rem;
+        box-shadow:       0 0 5px 6px #92b4a7 inset;
+        }
+
+    .plant-name {
+        color:       black;
+        font-family: "Righteous", cursive;
+        font-size:   3.75rem;
+        text-align:  center;
+        white-space: break-spaces;
+        }
+
+    .watering-instructions-title {
+        margin-top:    6%;
+        border-bottom: .25rem solid #b07156;
+        font-size:     2.35rem;
+        white-space:   nowrap;
+        }
+
+    .watering-instructions {
+        margin-top:  5%;
+        font-family: sans-serif;
+        font-size: 1.75rem;
+        }
+
+    a:-webkit-any-link {
+        /* this selector was over-riding my .plant-name class */
+        text-decoration: none;
+        }
+    }
+
+@media only screen and (min-width: 600px) {
+    .plant-container {
+        grid-template-columns: repeat(3, 33%);
+        gap:                   5%;
+        padding:               3%;
+        }
+
+    .plant-card {
+        height: 33rem;
+        }
+    }
