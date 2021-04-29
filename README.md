@@ -13,4 +13,4 @@ Styled-Components/CSS
 Yup
 Axios
 React-router-dom
-Redux
+
