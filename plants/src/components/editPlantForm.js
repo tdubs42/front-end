@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+import { axiosAuth } from '../utils/axiosAuth';
 import Nav from './Nav';
 
 const initialForm = {
@@ -14,7 +14,7 @@ export const EditPlant = (props) => {
   const plantId = props.match.params.id;
 
   useEffect(() => {
-    axios.get(`https://reqres.in/api/users/${plantId}`)
+    axiosAuth().get(`https://reqres.in/api/users/${plantId}`)
       .then(res => {
         console.log('resdata: ', res.data.data)
         setPlantToEdit(res.data.data)
@@ -24,7 +24,7 @@ export const EditPlant = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.put(`https://reqres.in/api/users/${plantId}`, plantToEdit)
+    axiosAuth().put(`https://reqres.in/api/users/${plantId}`, plantToEdit)
       .then(res => {
         console.log('axios.put: res ', res)
         
@@ -55,10 +55,10 @@ export const EditPlant = (props) => {
   return(
     <div>
       <Nav/>
-      <h1>Edit your plant</h1>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label>Plant's Nickname</label>
+        <form className="add-plant-form" onSubmit={handleSubmit}>
+        <h1 className="add-plant-header">Edit Your Plant</h1>
+        <div className="input-container">
+          <label className="add-plant-label">Plant's Nickname</label>
             <input 
               type='text'
               name='nickname'
@@ -85,11 +85,11 @@ export const EditPlant = (props) => {
           <div className="form-button-container">
             <button className="add-plant-form-button submit-btn" type="submit">Update Plant</button>            
             <Link to={`/my-plants/${plantId}`}>
-              <button>Cancel</button>
+              <button className="add-plant-form-button reset-btn">Cancel</button>
             </Link>
           </div>
+          </div>
         </form>
-      </div>
     </div>
   )
 }

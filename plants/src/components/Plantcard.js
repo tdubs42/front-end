@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { axiosAuth } from '../utils/axiosAuth';
 import Nav from './Nav';
 
 export const Plants = (props) => {
   const [plant, setPlant] = useState([]);
-  const {push} = props.history;
-
-  const plantId = props.match.params.id;
+  const {push} = useHistory();
+  const {id} = useParams();
+  // const plantId = props.match.params.id;
+  
   useEffect(() => { //using resreq api to allow us to grab the data of the item we're editing
-    axiosAuth().get(`https://reqres.in/api/users/${plantId}`)
+    const getPlants = () =>{
+      axiosAuth().get(`/api/users/${id}`)
       .then(res => {
         console.log('resData:', res.data.data)
         setPlant(res.data.data)
       })
       .catch(err => console.error('something went wrong: ', err))
-  }, [plantId]) 
+    }
+    getPlants();
+  },[id]) 
 
   // this works, but since we're using a public api it wont actually delete the data
   // check the console.log() to see the data is now empty
   const deletePlant = e => {
     e.preventDefault();
-    axiosAuth().delete(`https://reqres.in/api/users/${plantId}`)
+    axiosAuth().delete(`https://reqres.in/api/users/`)
       .then(res => {
         console.log(res)
         setPlant(res.data)
@@ -43,7 +47,7 @@ export const Plants = (props) => {
                 {plant.email}
               </p>
               
-            <Link to={`/edit-plant/${plantId}`} key={plantId}>
+            <Link to={`/edit-plant/${id}`} key={id}>
               <button className="">Edit</button>
             </Link>
             <button onClick={deletePlant}>

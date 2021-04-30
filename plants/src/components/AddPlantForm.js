@@ -4,22 +4,23 @@ import React, { useEffect, useState } from "react";
 import { axiosAuth }                          from "../utils/axiosAuth";
 import "../styles/AddPlantForm.css";
 import Nav from "./Nav";
+import { useHistory } from "react-router";
 
 const yupSchema = Yup.object().shape( {
-                                          nickname: Yup
-                                              .string()
-                                              .required()
-                                              .typeError( "Required" )
-                                              .min( 2 ),
-                                          species: Yup
-                                              .string()
-                                              .max( 200 ),
-                                          h2o_Frequency: Yup
-                                              .string()
-                                              .required()
-                                              .typeError( "How often do we need to water this one?" )
-                                              .min( 5 ),
-                                      } );
+    nickname: Yup
+        .string()
+        .required()
+        .typeError( "Required" )
+        .min( 2 ),
+    species: Yup
+        .string()
+        .max( 200 ),
+    h2o_Frequency: Yup
+        .string()
+        .required()
+        .typeError( "How often do we need to water this one?" )
+        .min( 5 ),
+} );
 
 const initialFormValues = {
     nickname: "",
@@ -27,13 +28,13 @@ const initialFormValues = {
     h2o_Frequency: "",
 };
 
-// const API = "http://fakeapi.jsonparseronline.com/posts"; // dont need with axiosAuth
-
 const AddPlantForm = () => {
     const [plants, setPlants]         = useState( [] );
     const [formValues, setFormValues] = useState( initialFormValues );
     const [formErrors, setFormErrors] = useState( initialFormValues );
     const [disabled, setDisabled]     = useState( true );
+
+    const {push} = useHistory();
 
 // axios GET request
 //     const getPlants = () => {
@@ -50,10 +51,12 @@ const AddPlantForm = () => {
 // axios POST request
     const postNewPlant = () => {
         axiosAuth()
-            .post( '/api/users' )  // refactored with axiosAuth
+            .post('/api/users')  // refactored with axiosAuth
             .then( res => {
                 setPlants( [...plants, res.data] );
                 setFormValues( initialFormValues );
+                console.log(res.data)
+                push('/my-plants')
             } )
             .catch( err => {
                 console.log( err );
@@ -86,7 +89,7 @@ const AddPlantForm = () => {
         const newPlant = {
             nickname: formValues.nickname.trim(),
             species: formValues.species.trim(),
-            h2o_Frequency: formValues.h2oFrequency.trim(),
+            h2o_Frequency: formValues.h2o_Frequency.trim(),
         };
 
         postNewPlant( newPlant );
@@ -111,7 +114,7 @@ const AddPlantForm = () => {
     const formReset = () => {
         document.getElementById( "nickname" ).value     = "";
         document.getElementById( "species" ).value      = "";
-        document.getElementById( "h2oFrequency" ).value = "";
+        document.getElementById( "h2o_Frequency" ).value = "";
     };
 
     return (
@@ -144,13 +147,13 @@ const AddPlantForm = () => {
                 <label className="add-plant-label">Watering Instructions</label>
                 <input
                     type="text"
-                    name="h2oFrequency"
-                    id="h2oFrequency"
+                    name="h2o_Frequency"
+                    id="h2o_Frequency"
                     placeholder="Needs water twice a week"
-                    value={formValues.h2oFrequency}
+                    value={formValues.h2o_Frequency}
                     onChange={onChange}
                 />
-                <p className="error">{formErrors.h2oFrequency}</p>
+                <p className="error">{formErrors.h2o_Frequency}</p>
 
                 <div className="form-button-container">
                     <button className="add-plant-form-button submit-btn" type="submit" disabled={disabled}>Add Plant

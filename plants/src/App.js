@@ -22,19 +22,19 @@ function App() {
                         exact path='/add-plant' 
                         component={AddPlantForm} >
                     </ProtectedRoute>
-                    <Route 
+                    <ProtectedRoute 
                         exact path='/my-plants' 
                         component={ViewPlants}>
-                    </Route>
+                    </ProtectedRoute>
                     {/* so we can view an individual plant based on its id*/}
-                    <Route 
+                    <ProtectedRoute 
                         path='/my-plants/:id'
                         component={Plantcard} >
-                    </Route>
-                    <Route 
+                    </ProtectedRoute>
+                    <ProtectedRoute 
                         path='/edit-plant/:id'
                         component={EditPlant} >
-                    </Route>
+                    </ProtectedRoute>
                 </Switch>
             </section>
         </div>

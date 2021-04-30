@@ -62,7 +62,7 @@ const SignIn = () => {
         e.preventDefault();
         axiosAuth() //if successful, sets token to localstorage, can make logout if we remove the localstorage
             .post(
-                "/api/users/login", // refactored with axiosAuth
+                "/api/login", // refactored with axiosAuth
                 formState,
             )
             .then( ( res ) => {

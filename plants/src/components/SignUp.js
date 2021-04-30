@@ -32,7 +32,7 @@ export default function SignUp () {
 
     const handleSubmit = event => {
         event.preventDefault();
-        axiosAuth().post('/api/users/register', formData) // refactored with axiosAuth
+        axiosAuth().post('/api/register', formData) // refactored with axiosAuth
             .then(res => { 
                 localStorage.setItem('token', res.data.token) 
                 setFormData({
