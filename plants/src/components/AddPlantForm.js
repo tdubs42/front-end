@@ -14,7 +14,7 @@ const yupSchema = Yup.object().shape( {
                                           species: Yup
                                               .string()
                                               .max( 200 ),
-                                          h2oFrequency: Yup
+                                          h2o_Frequency: Yup
                                               .string()
                                               .required()
                                               .typeError( "How often do we need to water this one?" )
@@ -24,7 +24,7 @@ const yupSchema = Yup.object().shape( {
 const initialFormValues = {
     nickname: "",
     species: "",
-    h2oFrequency: "",
+    h2o_Frequency: "",
 };
 
 // const API = "http://fakeapi.jsonparseronline.com/posts"; // dont need with axiosAuth
@@ -86,7 +86,7 @@ const AddPlantForm = () => {
         const newPlant = {
             nickname: formValues.nickname.trim(),
             species: formValues.species.trim(),
-            h2oFrequency: formValues.h2oFrequency.trim(),
+            h2o_Frequency: formValues.h2oFrequency.trim(),
         };
 
         postNewPlant( newPlant );

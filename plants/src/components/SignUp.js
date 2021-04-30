@@ -5,25 +5,25 @@ import {Link, useHistory} from 'react-router-dom';
 
 
 const schema = yup.object().shape({
-    fname: yup.string().required('user is required').min(6, 'please enter a name longer than 6 chars'),
-    email: yup.string().required('email is required').min(6, 'please enter a valid email address'),
-    phone: yup.number().required('phone is required'),
+    username: yup.string().required('user is required').min(6, 'please enter a name longer than 6 chars'),
+    // email: yup.string().required('email is required').min(6, 'please enter a valid email address'),
+    phone_number: yup.number().required('phone is required'),
     password: yup.string().required('u need a password')
 })
 
 export default function SignUp(){
     const [formData, setFormData] = useState({
-        fname: '',
-        email: '',
+        username: '',
+        // email: '',
         password: '',
-        phone: ''
+        phone_number: ''
     
     }) 
     const [errors, setErrors] = useState({
-        fname: '',
-        email: '',
+        username: '',
+        // email: '',
         password: '',
-        phone: ''
+        phone_number: ''
     }) 
     const history = useHistory();
 
@@ -38,14 +38,14 @@ export default function SignUp(){
 
     const handleSubmit= event => {
         event.preventDefault();
-        axiosAuth().post('/api/register', formData) // refactored with axiosAuth
+        axiosAuth().post('/api/users/register', formData) // refactored with axiosAuth
             .then(res => { 
                 localStorage.setItem('token', res.data.token) 
                 setFormData({
-                    fname: '',
-                    email: '',
+                    username: '',
+                    // email: '',
                     password: '',
-                    phone: ''
+                    phone_number: ''
             })
             history.push('/my-plants')
             console.log(res)
@@ -78,19 +78,19 @@ export default function SignUp(){
     return (
         <div className="signUp">
             <form onSubmit = {handleSubmit}>
-                <label htmlFor='fname'>Name:   
+                <label htmlFor='username'>Username:   
                 <input onChange={onInputChange}
-                    name='fname'
+                    name='username'
                     placeholder='name, please'
-                    id='fname'
+                    id='username'
                     type='text'
-                    value={formData.fname}
+                    value={formData.username}
                 />
-                {errors.fname.length > 0 ? <span className = "errors">{errors.fname} </span> : null }
+                {errors.username.length > 0 ? <span className = "errors">{errors.username} </span> : null }
                 </label>
-            <br>
-            </br>
-                <label htmlFor='email'> email:    
+            {/* <br>
+            </br> */}
+                {/* <label htmlFor='email'> email:    
                 <input 
                     onChange={onInputChange}
                     name='email'
@@ -100,7 +100,7 @@ export default function SignUp(){
                     value={formData.email}
                 />
                 {errors.email.length > 0 ? <span className = "errors">{errors.email} </span> : null }
-                </label>
+                </label> */}
             <br>
             </br>
                 <label htmlFor='password'>password:    

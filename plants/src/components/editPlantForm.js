@@ -1,11 +1,11 @@
-import React from 'react';
-// import {useHistory} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { axiosAuth } from '../utils/axiosAuth';
-
+import Nav from './Nav';
 
 export const EditPlant = (props) => {
-  // const history = useHistory();
-
+  const [plantToEdit, setPlantToEdit] = useState('');
+  const {push} = useHistory();
   const handleSubmit = e => {
     e.preventDefault();
     axiosAuth().put(`api/users`, )
@@ -13,6 +13,7 @@ export const EditPlant = (props) => {
 
   return(
     <div>
+      <Nav/>
       <h1>Edit your plant</h1>
       <div>
         <form onSubmit={handleSubmit}>
@@ -36,6 +37,8 @@ export const EditPlant = (props) => {
             />
           <div className="form-button-container">
             <button className="add-plant-form-button submit-btn" type="submit">Update Plant</button>
+            <button>Delete</button>
+            <button>Cancel</button>
           </div>
         </form>
       </div>

@@ -7,7 +7,7 @@ import { Link , useHistory} from "react-router-dom";
 //InitialState
 const initialState = {
   username: '',
-  phone: '',
+  phone_number: '',
   password: '',
 };
 
@@ -16,13 +16,13 @@ const formSchema = Yup.object().shape({
   username: Yup.string()
     .trim()
     .required('A username is required')
-    .min(4, 'Must be at least 4 characters'),
-  phone: Yup.string()
+    .min(2, 'Must be at least 4 characters'),
+  phone_number: Yup.string()
     .phone()
     .required('A phone number is required'),
   password: Yup.string()
     .required('A password is required')
-    .min(6, 'Must be at least 6 characters'),
+    // .min(6, 'Must be at least 6 characters'),
 });
 
 // SignIn component
@@ -62,7 +62,7 @@ const SignIn = () => {
     e.preventDefault();
     axiosAuth() //if successful, sets token to localstorage, can make logout if we remove the localstorage
       .post(
-        '/api/login', // refactored with axiosAuth
+        '/api/users/login', // refactored with axiosAuth
         formState
       )
       .then((res) => {
@@ -95,9 +95,9 @@ const SignIn = () => {
               Phone Number:
               <input
                 type='text'
-                name='phone'
+                name='phone_number'
                 placeholder='Enter your phone number'
-                value={formState.phone}
+                value={formState.phone_number}
                 onChange={change}
               />
               <p>{errors.phone}</p>

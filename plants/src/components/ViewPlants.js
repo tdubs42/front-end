@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link }                       from "react-router-dom";
+import axios from 'axios';
 import { axiosAuth }                  from "../utils/axiosAuth";
 import Nav                            from "./Nav";
 import "../styles/ViewPlants.css";
@@ -10,7 +11,7 @@ const ViewPlants = () => {
     useEffect( () => {
         // needed to set a function that handled the axios.get for it to render a .map of the array
         const getData = () => {
-            axiosAuth().get( `/api/users?page=2` )
+            axios.get( `https://reqres.in/api/users?page=2` )
                        .then( res => {
                            console.log( res.data );
                            setPlant( res.data.data );
