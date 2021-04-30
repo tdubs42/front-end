@@ -55,7 +55,7 @@ const AddPlantForm = () => {
             .then( res => {
                 setPlants( [...plants, res.data] );
                 setFormValues( initialFormValues );
-                console.log(res.data)
+                console.log('created new entry: ',res.data)
                 push('/my-plants')
             } )
             .catch( err => {
