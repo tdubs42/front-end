@@ -12,7 +12,6 @@ const initialForm = {
 export const EditPlant = (props) => {
   const [plantToEdit, setPlantToEdit] = useState(initialForm);
   const plantId = props.match.params.id;
-  // const {push} = props.history;
 
   useEffect(() => {
     axios.get(`https://reqres.in/api/users/${plantId}`)
@@ -27,7 +26,6 @@ export const EditPlant = (props) => {
     e.preventDefault();
     axios.put(`https://reqres.in/api/users/${plantId}`, plantToEdit)
       .then(res => {
-        // push('/my-plants')
         console.log('axios.put: res ', res)
         
         // const changedPlant = res.data.data.find(item => item.id === plantId)

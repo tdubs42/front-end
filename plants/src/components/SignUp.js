@@ -49,7 +49,7 @@ export default function SignUp () {
     const validation= e => {
         yup.reach(schema, e.target.name)
         .validate(e.target.value)
-        .then((valid) => {
+        .then(() => {
             setErrors({
                 ...errors, [e.target.errors]: " "
             })
