@@ -34,20 +34,22 @@ export const Plants = (props) => {
     <>
       <Nav/>
       <section className="plant-container">
-        <div className="plant-card">
-          <div className='plant-card-accent'>
-            <h2 className="plant-name">{plant.first_name} {plant.last_name}</h2>
-            <h3 className='watering-instructions-title'>Watering Instructions:</h3>
-            <p className='watering-instructions'>
-              {plant.email}
-            </p>
-            
-          <Link to={`/edit-plant/${plantId}`} key={plantId}>
-            <button className="">Edit</button>
-          </Link>
-          <button onClick={deletePlant}>
-            Delete
-          </button>
+        <div className='solo'>
+          <div className="plant-card">
+            <div className='plant-card-accent'>
+              <h2 className="plant-name">{plant.first_name} {plant.last_name}</h2>
+              <h3 className='watering-instructions-title'>Watering Instructions:</h3>
+              <p className='watering-instructions'>
+                {plant.email}
+              </p>
+              
+            <Link to={`/edit-plant/${plantId}`} key={plantId}>
+              <button className="">Edit</button>
+            </Link>
+            <button onClick={deletePlant}>
+              Delete
+            </button>
+            </div>
           </div>
         </div>
       </section>

@@ -12,7 +12,7 @@ const initialForm = {
 export const EditPlant = (props) => {
   const [plantToEdit, setPlantToEdit] = useState(initialForm);
   const plantId = props.match.params.id;
-  const {push} = props.history;
+  // const {push} = props.history;
 
   useEffect(() => {
     axios.get(`https://reqres.in/api/users/${plantId}`)

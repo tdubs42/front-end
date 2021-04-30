@@ -13,33 +13,30 @@ import {Plants as Plantcard} from './components/Plantcard';
 function App() {
     return (
         <Router>
-        {/* the nav will be removed when things get fixed, it'll be here for testing purposes */}
-        {/* <Nav logout={logout}/>  */}
         <div>
-        <section className="App-body">
-            <Switch>
-                <Route exact path='/' component={SignIn} />
-                <Route path='/sign-up' component={SignUp}/>
-                <ProtectedRoute 
-                    exact path='/add-plant' 
-                    component={AddPlantForm} >
-                </ProtectedRoute>
-                <Route 
-                    exact path='/my-plants' 
-                    component={ViewPlants}>
-                </Route>
-                {/* so we can view an individual plant based on its id*/}
-                <Route 
-                    path='/my-plants/:id'
-                    component={Plantcard} >
-                </Route>
-                <Route 
-                    path='/edit-plant/:id'
-                    component={EditPlant} >
-                </Route>
-                
-            </Switch>
-        </section>
+            <section className="App-body">
+                <Switch>
+                    <Route exact path='/' component={SignIn} />
+                    <Route path='/sign-up' component={SignUp}/>
+                    <ProtectedRoute 
+                        exact path='/add-plant' 
+                        component={AddPlantForm} >
+                    </ProtectedRoute>
+                    <Route 
+                        exact path='/my-plants' 
+                        component={ViewPlants}>
+                    </Route>
+                    {/* so we can view an individual plant based on its id*/}
+                    <Route 
+                        path='/my-plants/:id'
+                        component={Plantcard} >
+                    </Route>
+                    <Route 
+                        path='/edit-plant/:id'
+                        component={EditPlant} >
+                    </Route>
+                </Switch>
+            </section>
         </div>
         </Router>
     );
