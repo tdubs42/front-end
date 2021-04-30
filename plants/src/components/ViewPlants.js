@@ -26,12 +26,11 @@ const ViewPlants = () => {
             <Nav/>
             <section className="plant-container">
                 {plant.map( ( res ) => (
-                    // this should be giving us the details of the plant as a key for the edit form to have the info fill out on the form
-                    // check editplantform to see how it gets that data (just not right now)
+                    // We're mapping through the state of Plant to grab individual pieces of data groups and put them in their own cards
+                    // and each card will link to a CRUD card with its info based on its id
                     <Link to={`/my-plants/${res.id}`} key={res.id} className="plant-link">
                         <div className="plant-card">
                             <div className='plant-card-accent'>
-                            {/*<img src={id.avatar} alt="person"/>*/}
                                 <h2 className="plant-name">{res.first_name} {res.last_name}</h2>
                                 <h3 className='watering-instructions-title'>Watering Instructions:</h3>
                                 <p className='watering-instructions'>

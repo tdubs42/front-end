@@ -70,7 +70,7 @@ export default function SignUp () {
                 <div className='sign-up-container'>
                 <form className="sign-up-form" onSubmit={handleSubmit}>
                     <h2 className="sign-up-title">Sign up</h2>
-                    <label className="sign-up-label" htmlFor="username">Name:</label>
+                    <label className="sign-up-label" htmlFor="username">Username:</label>
                     <input className="sign-up-input"
                            onChange={onInputChange}
                            name="username"
@@ -80,19 +80,8 @@ export default function SignUp () {
                            value={formData.username}
                     />
                     {errors.username.length > 0 ? <span className="errors">{errors.username} </span> : null}
-
-                    <label className="sign-up-label" htmlFor="password">password:
-                        <input className="sign-up-input"
-                               onChange={onInputChange}
-                               name="password"
-                               placeholder="password"
-                               id="password"
-                               type="text"
-                               value={formData.password}
-                        />
-                        {errors.password.length > 0 ? <span className="errors">{errors.password} </span> : null}
-                    </label>
-                    <label className="sign-up-label" htmlFor="phone_number"> phone_number:
+                    
+                    <label className="sign-up-label" htmlFor="phone_number"> Phone Number:
                         <input className="sign-up-input"
                                onChange={onInputChange}
                                name="phone_number"
@@ -102,6 +91,18 @@ export default function SignUp () {
                                value={formData.phone_number}
                         />
                         {errors.phone_number.length > 0 ? <span className="errors">{errors.phone_number} </span> : null}
+                    </label>
+
+                    <label className="sign-up-label" htmlFor="password">Password:
+                        <input className="sign-up-input"
+                               onChange={onInputChange}
+                               name="password"
+                               placeholder="password"
+                               id="password"
+                               type="password"
+                               value={formData.password}
+                        />
+                        {errors.password.length > 0 ? <span className="errors">{errors.password} </span> : null}
                     </label>
                     <br>
                     </br>

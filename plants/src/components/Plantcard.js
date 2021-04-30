@@ -3,11 +3,13 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { axiosAuth } from '../utils/axiosAuth';
 import Nav from './Nav';
 
-export const Plants = (props) => {
+// This component handles the redirection for Editing the card you selected
+// or deleting it entirely off the api
+export const Plants = () => {
   const [plant, setPlant] = useState([]);
   const {push} = useHistory();
   const {id} = useParams();
-  // const plantId = props.match.params.id;
+  //grabbing the id from the url to match up with the api user id 
   
   useEffect(() => { //using resreq api to allow us to grab the data of the item we're editing
     const getPlants = () =>{
@@ -22,12 +24,12 @@ export const Plants = (props) => {
   },[id]) 
 
   // this works, but since we're using a public api it wont actually delete the data
-  // check the console.log() to see the data is now empty
+  // check the console.log() to see the data has been deleted
   const deletePlant = e => {
     e.preventDefault();
-    axiosAuth().delete(`https://reqres.in/api/users/`)
+    axiosAuth().delete(`/api/users/${id}`)
       .then(res => {
-        console.log(res)
+        console.log('delete successful!')
         setPlant(res.data)
         push('/my-plants')
       })
@@ -46,11 +48,11 @@ export const Plants = (props) => {
               <p className='watering-instructions'>
                 {plant.email}
               </p>
-              
+            {/* same concept as before, setting up the edit form to be pre-filled out with details based on the id from the api */}
             <Link to={`/edit-plant/${id}`} key={id}>
-              <button className="">Edit</button>
+              <button className="add-plant-form-button submit-btn" >Edit</button>
             </Link>
-            <button onClick={deletePlant}>
+            <button className="add-plant-form-button reset-btn" onClick={deletePlant}>
               Delete
             </button>
             </div>

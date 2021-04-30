@@ -5,12 +5,14 @@ Ensuring that all your plants are consistently watered is actually pretty diffic
 With an easy to use interface for creating a plant watering schedule tailored to each individual plant, Water My Plants will remind users when it's time to feed that foliage and quench your plants' thirst.
 
 # Track Team WebPT 162 Devs:
-Casey Dietz, Andrew Castillo, Tawnya Wessar, Nicole Pizzano, Austin Gibbs
+Auth Devs: Casey Dietz, Andrew Castillo      
+Form Devs: Tawnya Wessar, Nicole Pizzano
 
 # Stack
 ReactJS 
-Styled-Components/CSS
+CSS
 Yup
+Yup-phone
 Axios
 React-router-dom
 
