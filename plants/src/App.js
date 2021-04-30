@@ -8,6 +8,7 @@ import SignUp from './components/SignUp';
 import ProtectedRoute from './utils/ProtectedRoute';
 import ViewPlants from './components/ViewPlants';
 import { EditPlant } from './components/editPlantForm';
+import {Plants as Plantcard} from './components/Plantcard';
 
 function App() {
     return (
@@ -23,19 +24,19 @@ function App() {
                     exact path='/add-plant' 
                     component={AddPlantForm} >
                 </ProtectedRoute>
-                <ProtectedRoute 
+                <Route 
                     exact path='/my-plants' 
                     component={ViewPlants}>
-                </ProtectedRoute>
+                </Route>
                 {/* so we can view an individual plant based on its id*/}
-                <ProtectedRoute 
+                <Route 
                     path='/my-plants/:id'
+                    component={Plantcard} >
+                </Route>
+                <Route 
+                    path='/edit-plant/:id'
                     component={EditPlant} >
-                </ProtectedRoute>
-                <ProtectedRoute 
-                    path='/edit-plant/'
-                    component={EditPlant} >
-                </ProtectedRoute>
+                </Route>
                 
             </Switch>
         </section>

@@ -14,17 +14,16 @@ const initialState = {
 
 // formSchema using Yup
 const formSchema = Yup.object().shape( {
-                                           username: Yup.string()
-                                                        .trim()
-                                                        .required( "A username is required" )
-                                                        .min( 4, "Must be at least 4 characters" ),
-                                           phone: Yup.string()
-                                                     .phone()
-                                                     .required( "A phone number is required" ),
-                                           password: Yup.string()
-                                                        .required( "A password is required" )
-                                                        .min( 6, "Must be at least 6 characters" ),
-                                       } );
+    username: Yup.string()
+        .trim()
+        .required( "A username is required" )
+        .min( 3, "Must be at least 3 characters" ),
+    phone: Yup.string()
+        .required( "A phone number is required" ),
+    password: Yup.string()
+        .required( "A password is required" )
+        .min( 2, "Must be at least 2 characters" ),
+} );
 
 // SignIn component
 const SignIn = () => {
@@ -63,7 +62,7 @@ const SignIn = () => {
         e.preventDefault();
         axiosAuth() //if successful, sets token to localstorage, can make logout if we remove the localstorage
             .post(
-                "/api/login", // refactored with axiosAuth
+                "/api/users/login", // refactored with axiosAuth
                 formState,
             )
             .then( ( res ) => {
@@ -71,7 +70,7 @@ const SignIn = () => {
                 localStorage.setItem( "token", res.data.token );
                 history.push( "/my-plants" );
             } )
-            .catch( ( err ) => console.error( "failed logging in: ", err ) );
+            .catch( ( err ) => console.error( "failed logging in: ", err.response ) );
     };
 
     return (
@@ -122,12 +121,12 @@ const SignIn = () => {
                         />
                         <p className="error">{errors.password}</p>
 
-                        <button className="sign-in-btn" disabled={buttonDisabled}>
-                            Sign In
-                        </button>
                         <Link id='signUpLink' to="/sign-up">
                             Need an account? <span className='sign-up-cta'>Sign-up</span>
                         </Link>
+                        <button className="sign-in-btn" disabled={buttonDisabled}>
+                            Sign In
+                        </button>
                     </form>
                 </section>
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as yup                       from "yup";
 import { axiosAuth }                  from "../utils/axiosAuth";
 import { Link, useHistory }           from "react-router-dom";
@@ -6,27 +6,25 @@ import "../styles/SignUp.css";
 
 const schema = yup.object().shape( {
     username: yup.string().required( "user is required" ).min( 6, "please enter a name longer than 6 chars" ),
-    phone: yup.number().required( "phone is required" ),
     password: yup.string().required( "u need a password" ),
+    phone_number: yup.number().required( "phone_number is required" )
 } );
 
 export default function SignUp () {
     const [formData, setFormData] = useState({
         username: "",
         password: "",
-        phone: "",
+        phone_number: "",
     });
     const [errors, setErrors] = useState( {
         username: "",
         password: "",
-        phone: "",
+        phone_number: "",
     } );
-    const [disabled, setDisabled] = useState( true );
+
     const history = useHistory();
 
     const onInputChange = event => {
-        // const { form, value, type, name } = event.target
-        // const valueToUse = type === 'text'? name :  value
         const newForm = { ...formData, [event.target.name]: event.target.value };
         validation( event );
         setFormData( newForm );
@@ -34,42 +32,34 @@ export default function SignUp () {
 
     const handleSubmit = event => {
         event.preventDefault();
-        axiosAuth().post( "/api/register", formData ) // refactored with axiosAuth
-            .then( res => {
-                localStorage.setItem( "token", res.data.token );
+        axiosAuth().post('/api/users/register', formData) // refactored with axiosAuth
+            .then(res => { 
+                localStorage.setItem('token', res.data.token) 
                 setFormData({
-                    username: "",
-                    password: "",
-                    phone: "",
-                });
-                history.push( "/my-plants" );
-                console.log( res );
-            } )
-            .catch( err => console.error( err.response ) );
-    };
+                    username: '',
+                    password: '',
+                    phone_number: ''
+            })
+            history.push('/my-plants')
+            console.log(res)
+        })
+        .catch(err => console.error(err.response))
+    }
 
-    const validation = (name, value) => {
-        yup.reach( schema, name )
-           .validate( value )
-           .then( () => {
-               setErrors( {
-                              ...errors, [name]: "",
-                          } );
-           } )
-           .catch( ( err ) => {
-               setErrors( {
-                              ...errors, [name]: err.errors[0],
-                          } );
-           } );
-
-        setFormData( { ...formData, [name]: value } );
-    };
-
-    useEffect( () => {
-        schema.isValid( formData ).then( valid => {
-            setDisabled( !valid );
-        } );
-    }, [formData] );
+    const validation= e => {
+        yup.reach(schema, e.target.name)
+        .validate(e.target.value)
+        .then((valid) => {
+            setErrors({
+                ...errors, [e.target.errors]: " "
+            })
+        })
+        .catch((err) => {
+            setErrors({
+                ...errors, [e.target.errors]: err.errors[0]
+            })
+        })
+    }
 
     return (
         <>
@@ -102,23 +92,23 @@ export default function SignUp () {
                         />
                         {errors.password.length > 0 ? <span className="errors">{errors.password} </span> : null}
                     </label>
-                    <label className="sign-up-label" htmlFor="phone"> phone:
+                    <label className="sign-up-label" htmlFor="phone_number"> phone_number:
                         <input className="sign-up-input"
                                onChange={onInputChange}
-                               name="phone"
-                               placeholder="telephone, please"
-                               id="phone"
+                               name="phone_number"
+                               placeholder="telephone_number, please"
+                               id="phone_number"
                                type="text"
-                               value={formData.phone}
+                               value={formData.phone_number}
                         />
-                        {errors.phone.length > 0 ? <span className="errors">{errors.phone} </span> : null}
+                        {errors.phone_number.length > 0 ? <span className="errors">{errors.phone_number} </span> : null}
                     </label>
                     <br>
                     </br>
                     <Link id='signInLink' to="/">
                         Already a user? <span className='sign-in-cta'>Sign-in!</span>
                     </Link>
-                    <button className='sign-up-btn' disabled={disabled}> Register</button>
+                    <button className='sign-up-btn' > Register</button>
                 </form>
                 </div>
                 <img className="sign-in-image"
