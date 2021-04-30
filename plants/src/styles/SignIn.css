@@ -1,0 +1,165 @@
+/**
+ * Remember your why
+ *
+ * font import in App.css
+ **/
+@media only screen and (min-width: 250px) {
+    .sign-in-header {
+        width:            100vw;
+        padding:          1.5rem 1rem;
+        border-bottom:    .25rem solid black;
+        color:            ghostwhite;
+        font-family:      "Segoe Script", serif;
+        font-size:        4rem;
+        font-weight:      bolder;
+        text-align:       center;
+        background-color: rgba(76, 91, 97, 1);
+        }
+
+    .sign-in-img-container {
+        display: flex;
+        }
+
+    .sign-in-image {
+        display: none;
+        }
+
+    .sign-in-container {
+        width:  100%;
+        margin: 2rem;
+        }
+
+    .sign-in-form {
+        display:          flex;
+        flex-direction:   column;
+        align-items:      center;
+        padding:          1rem;
+        background-color: #707070;
+        border-radius:    2rem;
+        filter:           drop-shadow(8px 8px 10px #81667a);
+        }
+
+    .sign-in-title {
+        margin-bottom: -2rem;
+        font-family:   "Righteous", cursive;
+        font-size:     3rem;
+        text-align:    center;
+        text-shadow:   -.125rem -.125rem 0 #b6cb9e,
+                       .125rem -.125rem 0 #b6cb9e,
+                       -.125rem .125rem 0 #b6cb9e,
+                       .125rem .125rem 0 #b6cb9e;
+        /* text shadow trick found here https://wpshout.com/quick-guides/create-text-outline-css/ */
+        }
+
+    .sign-in-label {
+        width:         100%;
+        padding-left:  .5rem;
+        margin-top:    2rem;
+        margin-bottom: .5rem;
+        color:         ghostwhite;
+        font-family:   "Righteous", cursive;
+        font-size:     3rem;
+        font-variant:  all-small-caps;
+        text-align:    left;
+        text-shadow:   -.125rem -.125rem 0 black,
+                       .125rem -.125rem 0 black,
+                       -.125rem .125rem 0 black,
+                       .125rem .125rem 0 black;
+        }
+
+    .sign-in-input {
+        width:         95%;
+        height:        3rem;
+        padding:       1rem;
+        font-family:   monospace;
+        font-size:     2rem;
+        font-weight:   bold;
+        border-radius: 1.5rem;
+        }
+
+    .sign-in-btn {
+        width:            33%;
+        padding:          1rem;
+        border:           .25rem solid black;
+        margin:           2rem;
+        font-family:      "Righteous", cursive;
+        font-size:        2rem;
+        border-radius:    1.25rem;
+        background-color: #b6cb9e;
+        }
+
+    .sign-in-btn:hover {
+        text-decoration:  underline dashed black;
+        background-color: #8de52d;
+        cursor: cell;
+        }
+
+    #signUpLink {
+        color:       ghostwhite;
+        font-family: monospace;
+        font-size:   2.25rem;
+        font-weight: bold;
+        text-align:  center;
+        }
+
+    #signUpLink:hover {
+        font-variant: all-small-caps;
+        }
+
+    #signUpLink > .sign-up-cta {
+        color:       #b07156;
+        font-family: "Righteous", cursive;
+        font-size:   3rem;
+        text-shadow:   -.125rem -.125rem 0 black,
+                       .125rem -.125rem 0 black,
+                       -.125rem .125rem 0 black,
+                       .125rem .125rem 0 black;
+        }
+
+    }
+
+@media only screen and (min-width: 600px) {
+    .sign-in-image {
+        display: initial;
+        max-width: 45%;
+        height: auto;
+        margin: 2rem;
+        border-radius: 2rem;
+        }
+    }
+
+@media only screen and (min-width: 768px) {
+    .sign-in-img-container {
+        justify-content: center;
+        align-items: center;
+        }
+
+    .sign-in-image {
+        max-width: 36%;
+        margin: 2rem 3rem;
+        }
+    }
+
+@media only screen and (min-width: 992px) {
+    .sign-in-image {
+        max-width: 33%;
+        margin: 3rem 3rem 0 3rem;
+        }
+
+    .sign-in-form {
+        margin: 2rem 5rem 0 0;
+        }
+    }
+
+@media only screen and (min-width: 1200px) {
+    .sign-in-img-container {
+        margin: 0 12rem;
+        }
+    }
+
+@media only screen and (min-width: 1800px) {
+    .sign-in-form {
+        max-width: 75%;
+        margin-left: 20%;
+        }
+    }
