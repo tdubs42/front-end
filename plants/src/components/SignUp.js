@@ -7,7 +7,7 @@ import {Link, useHistory} from 'react-router-dom';
 const schema = yup.object().shape({
     username: yup.string().required('user is required').min(6, 'please enter a name longer than 6 chars'),
     // email: yup.string().required('email is required').min(6, 'please enter a valid email address'),
-    phone_number: yup.number().required('phone is required'),
+    phone_number: yup.string().required('phone is required'),
     password: yup.string().required('u need a password')
 })
 
@@ -27,7 +27,6 @@ export default function SignUp(){
     }) 
     const history = useHistory();
 
-    // const [disabled, setDisabled] = useState(true)
     const onInputChange = event => {
         // const { form, value, type, name } = event.target
         // const valueToUse = type === 'text'? name :  value
@@ -68,13 +67,6 @@ export default function SignUp(){
         })
     }
 
-//     useEffect(() => {
-//         schema.isValid(formData).then(valid => {
-//             setDisabled(!valid)
-//         })
-//   }, [formData])
-
-
     return (
         <div className="signUp">
             <form onSubmit = {handleSubmit}>
@@ -88,19 +80,6 @@ export default function SignUp(){
                 />
                 {errors.username.length > 0 ? <span className = "errors">{errors.username} </span> : null }
                 </label>
-            {/* <br>
-            </br> */}
-                {/* <label htmlFor='email'> email:    
-                <input 
-                    onChange={onInputChange}
-                    name='email'
-                    placeholder='e.mail, please'
-                    id='email'
-                    type='email'
-                    value={formData.email}
-                />
-                {errors.email.length > 0 ? <span className = "errors">{errors.email} </span> : null }
-                </label> */}
             <br>
             </br>
                 <label htmlFor='password'>password:    
@@ -119,13 +98,13 @@ export default function SignUp(){
                 <label htmlFor='phone'> phone:   
                 <input 
                     onChange={onInputChange}
-                    name='phone'
+                    name='phone_number'
                     placeholder='telephone, please'
-                    id='phone'
+                    id='phone_number'
                     type='text'
-                    value={formData.phone}
+                    value={formData.phone_number}
                 />
-                {errors.phone.length > 0 ? <span className = "errors">{errors.phone} </span> : null }
+                {errors.phone_number.length > 0 ? <span className = "errors">{errors.phone_number} </span> : null }
                 </label>
                 <br>
                 </br>

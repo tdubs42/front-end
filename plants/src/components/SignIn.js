@@ -7,8 +7,8 @@ import { Link , useHistory} from "react-router-dom";
 //InitialState
 const initialState = {
   username: '',
-  phone_number: '',
   password: '',
+  phone_number: '',
 };
 
 // formSchema using Yup
@@ -17,12 +17,12 @@ const formSchema = Yup.object().shape({
     .trim()
     .required('A username is required')
     .min(2, 'Must be at least 4 characters'),
-  phone_number: Yup.string()
-    .phone()
-    .required('A phone number is required'),
-  password: Yup.string()
-    .required('A password is required')
+    password: Yup.string()
+    .required('A password is required'),
     // .min(6, 'Must be at least 6 characters'),
+    phone_number: Yup
+      .string()
+      .required('A phone number is required')
 });
 
 // SignIn component
